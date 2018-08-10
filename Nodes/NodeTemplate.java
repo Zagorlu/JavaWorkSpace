@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public abstract class NodeTemplate<T> implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private NodeTemplate<T> m_next, m_before;
+	protected NodeTemplate<T> m_next, m_before;
 	
 	public NodeTemplate(){}
 		
@@ -36,5 +36,8 @@ public abstract class NodeTemplate<T> implements Serializable{
 	public abstract String toString();
 	public abstract boolean equals(Object obj);
 	public abstract void setData(T t);
-	public abstract T getData(T t);
+	public abstract T getData();
+	public abstract void breakNext();
+	public abstract void breakBefore();
+	public abstract void breakAll();
 }

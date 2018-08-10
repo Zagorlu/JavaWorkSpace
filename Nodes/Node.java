@@ -36,7 +36,28 @@ public class Node<T> extends NodeTemplate<T> implements Serializable {
 	}
 
 	@Override
-	public T getData(T t) {
+	public T getData() {
 		return this.m_data;
+	}
+
+	@Override
+	public void breakNext() {
+		this.m_next = null;
+	}
+
+	@Override
+	public void breakBefore() {
+		this.m_before = null;
+	}
+
+	@Override
+	public void breakAll() {
+		this.breakNext();
+		this.breakBefore();
+		try {
+			this.finalize();
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 	}
 }
