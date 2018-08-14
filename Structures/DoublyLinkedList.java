@@ -1,6 +1,7 @@
 package Structures;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Iterator;
 import Nodes.Node;
 import static Util.NodeUtil.*;
@@ -10,6 +11,13 @@ public class DoublyLinkedList<T> implements Iterable<T>, Serializable{
 	private Node<T> m_cursor, m_head, m_tail;
 	private long m_count = 0L;
 	private boolean m_finialize;
+	
+	public DoublyLinkedList() {}
+	
+	public DoublyLinkedList(Collection<? extends T> c) {
+		for(T t: c)
+			this.add(t);
+	}
 	
 	public DoublyLinkedList<T> add(T item) {
 		nullControll(item);
