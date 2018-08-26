@@ -9,9 +9,9 @@ import java.util.List;
  *
  */
 public class TagTemplate {
-	private String m_name, m_start, m_end;
-	private MultiAttributeTemplate m_attributes;
-	private List<Object> m_value;
+	protected String m_name, m_start, m_end;
+	protected MultiAttributeTemplate m_attributes;
+	protected List<Object> m_value;
 	
 	/**
 	 * Non-static Initiliazer Code Block
@@ -41,7 +41,7 @@ public class TagTemplate {
 	/**
 	 * This method update to start end
 	 */
-	private void setStart() {
+	protected void setStart() {
 		this.m_start = String.format("<%s%s>", this.m_name, this.m_attributes.toString());
 	}
 	
@@ -104,6 +104,7 @@ public class TagTemplate {
 	 */
 	public void removeAllAttribute() {
 		this.m_attributes.removeAllAttributes();
+		this.setStart();
 	}
 	
 	/**
@@ -120,12 +121,12 @@ public class TagTemplate {
 	 */
 	@Override
 	public String toString() {
+		this.setStart();
 		if(m_value.size() == 0)
 			return m_start + m_end;
 		String valueResult = "";
 		for (Object o : m_value)
 			valueResult += o.toString();
-		
 		return m_start + valueResult + m_end;
 	}
 }

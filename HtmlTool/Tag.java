@@ -1,5 +1,6 @@
 package HtmlTool;
 
+import HtmlTool.Attribute.HtmlAttribute;
 import Markup.Tag.MultiAttributeTemplate;
 import Markup.Tag.TagTemplate;
 
@@ -90,6 +91,15 @@ public enum Tag {
 
 		public HtmlItem(String name, MultiAttributeTemplate attrs) {
 			super(name, attrs);
-		}	
+		}
+		
+		public HtmlAttribute getAttribute(int index) {
+			return (HtmlAttribute) m_attributes.getAttributeList().get(index);
+		}
+		
+		public String getName() {
+			return m_name;
+		}
+		
 	}	
 }
